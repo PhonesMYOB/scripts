@@ -10,6 +10,6 @@ n="$(($accs - 7))"
 
 for (( i = 0; i <= $n; i++ )); do
 	echo $i | myob-auth l &>/dev/null || die "Unable to myob auth to ${i} account"
-  # aws sts get-caller-identity
-  aws ssm delete-parameters --names $(aws ssm get-parameters-by-path --path /ops/bk/ --recursive --output text --query "Parameters[].[Name]" --output text)	
+	# aws sts get-caller-identity
+	aws ssm delete-parameters --names $(aws ssm get-parameters-by-path --path /ops/bk/ --recursive --output text --query "Parameters[].[Name]" --output text)	
 done
